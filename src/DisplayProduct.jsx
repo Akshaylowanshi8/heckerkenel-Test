@@ -21,7 +21,7 @@ const DisplayProduct=()=>{
 
 
 return(<>
-<div className="flex justify-center h-auto mt-10 ">
+<div className="flex flex-col justify-center h-auto mt-10 m-9 ">
 <table className="text-center   border-black w-auto h-auto">
 <tr className="p-2  border-2 hover:bg-slate-200">
 <th className="p-4 border-2" >
