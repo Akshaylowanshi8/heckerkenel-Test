@@ -7,7 +7,8 @@ const Home=()=>{
 
     const Logout=()=>{
         
-        nav("/")
+  localStorage.clear()
+  nav("/")
     }
 return(
     <>

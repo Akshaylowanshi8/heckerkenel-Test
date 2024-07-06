@@ -5,6 +5,7 @@ const Search =()=>{
 
     const[val ,setval] = useState("")
     const[valdata ,setvaldata] = useState([])
+    const [err ,seterr]=useState("")
 
     const [myallproducts, setmyallProducts] = useState([]);
 
@@ -21,21 +22,27 @@ const Search =()=>{
          const filteredProducts = myallproducts.filter(product =>
             product.ProductName.toLowerCase().includes(val.toLowerCase())
           );
-          setvaldata(filteredProducts)
+
+          if (filteredProducts.length<=0)
+          {
+
+            seterr("no recod found ")
+          }
+          else{
+seterr("")
+setvaldata(filteredProducts)
+          }
+
     }
-
-
-
-      const data = valdata.map((key,i) => {
+    const data = valdata.map((key,i) => {
         return(<>
    <tr className="p-2 border-2  hover:bg-slate-200">
    <td className="p-2 ">{i+1}</td>
    <td className="p-2 ">{key.ProductName}</td>
    <td className="p-2" >{key.Price}</td></tr>
         </>)
-   
-   
-         })
+   })
+
 return(<>
 <form className="" onSubmit={finddata}>
 <div className="flex text-center justify-center  mt-10">
@@ -45,11 +52,29 @@ return(<>
 </form>
 
 
-<div className="text-center flex justify-center mt-2  w-auto">
+{/* 
 
 {data.length>0?(
-  
 <>
+<table className="text-center p-28  border-black ">
+<tr className="p-2  border-2 hover:bg-slate-200">
+<th className="p-4">
+  S.No
+</th>
+<th className="p-4">
+    ProductName
+</th>
+<th className="p-4">
+    ProductPrice
+</th>
+</tr>
+{data}
+</table>
+</>
+):(<h1 className="text-red-600 p-4 text-xl ">"No Product found"</h1>)}
+</div> */}
+
+<div className="text-center flex justify-center mt-2  w-auto">
 
 <table className="text-center p-28  border-black ">
 <tr className="p-2  border-2 hover:bg-slate-200">
@@ -65,15 +90,9 @@ return(<>
 </tr>
 {data}
 </table>
-
-</>
-
-  
-):(<h1 className="text-red-600 p-4 text-xl ">"No Product found"</h1>)}
+{err}
 </div>
 </>)
-
-
 }
 
 

@@ -31,12 +31,12 @@ const Addproduct=()=>{
                 id: new Date().getTime(), 
                 ...prodata
               };
-              // Add new product to the products array
+              
               const updatedProducts = [...products, newProduct];
               setProducts(updatedProducts);
-              // Save products array to localStorage
+            
               localStorage.setItem('products', JSON.stringify(updatedProducts));
-      
+              alert("product save")
               setprodata({
               ProductName:"",
               Price:""
