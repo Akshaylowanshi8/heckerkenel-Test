@@ -25,9 +25,7 @@ const Loginuser =async()=>{
         console.log(res.data)
         let token=res.data.token
         localStorage.setItem('token', token)
-
         nav("home")
-
         formdata({
         email:"",
         password:""
@@ -39,6 +37,7 @@ const Loginuser =async()=>{
      catch (error) {
         console.error(error);
         alert(error.response.data.error)
+        return
     }
 }
 
@@ -46,7 +45,7 @@ return(<>
 
 <div className="flex h-96 justify-center items-center">
 <div className="w-60 h-64 shadow-2xl p-5 ">
-<form className="" onSubmit={Loginuser} >
+<form className="" >
     <div className="mb-4">
       <label class="block  text-sm font-bold mb-2" for="email">
         Email
@@ -59,7 +58,7 @@ return(<>
       </label>
       <input required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="password" name="password" value={formdata.password} onChange={setvalue}/>
     </div>
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded " type="submit" >
+    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded " type="submit" onClick={Loginuser}  >
         Login
       </button>
     </form>
